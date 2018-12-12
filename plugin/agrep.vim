@@ -90,7 +90,7 @@ func! Agrep(args)
         let grep_cmd = s:exec_file
     endif
 
-    let s:agrep_job = job_start(['/bin/bash', '-c', grep_cmd], {
+    let s:agrep_job = job_start(['/bin/sh', '-c', grep_cmd], {
 		\ 'out_io': 'buffer', 'out_buf': s:bufnr, 'out_modifiable': 0,
 		\ 'out_cb': function('s:out_cb'), 'close_cb': function('s:close_cb')})
     let s:stl_timer = timer_start(200, function('s:update_stl'), { 'repeat': -1 })
